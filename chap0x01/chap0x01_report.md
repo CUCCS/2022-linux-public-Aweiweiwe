@@ -1,8 +1,3 @@
----
-typora-copy-images-to: /image
-typora-root-url: /image
----
-
 # 主流Linux发行版初体验：本地实验环境和云实验环境
 
 ## 实验目的
@@ -48,25 +43,25 @@ ls /etc/*release*
 
 - 本地环境实验截图：
 
-<img src="/local_cat_issue.png" alt="local_cat_issue" style="zoom:80%;" />
+<img src="./image/local_cat_issue.png" alt="local_cat_issue" style="zoom:80%;" />
 
-<img src="/local_cat_os-release.png" alt="local_cat_os-release" style="zoom:80%;" />
+<img src="./image/local_cat_os-release.png" alt="local_cat_os-release" style="zoom:80%;" />
 
 
 
-<img src="/local_lsb_release.png" alt="local_lsb_release" style="zoom:80%;" />
+<img src="./image/local_lsb_release.png" alt="local_lsb_release" style="zoom:80%;" />
 
-<img src="/local_ls_release.png" alt="local_ls_*release*" style="zoom:80%;" />
+<img src="./image/local_ls_release.png" alt="local_ls_*release*" style="zoom:80%;" />
 
 - 云环境实验截图：
 
-<img src="/cloud_issue.png" alt="cloud_issue" style="zoom:80%;" />
+<img src="./image/cloud_issue.png" alt="cloud_issue" style="zoom:80%;" />
 
-<img src="/cloud_cat_os-release.png" alt="cloud_cat_os-release" style="zoom:80%;" />
+<img src="./image/cloud_cat_os-release.png" alt="cloud_cat_os-release" style="zoom:80%;" />
 
-<img src="/cloud_lsb_release.png" alt="cloud_lsb_release" style="zoom:80%;" />
+<img src="./image/cloud_lsb_release.png" alt="cloud_lsb_release" style="zoom:80%;" />
 
-<img src="/cloud_ls_release.png" alt="cloud_ls_*release*" style="zoom:80%;" />
+<img src="./image/cloud_ls_release.png" alt="cloud_ls_*release*" style="zoom:80%;" />
 
 - 本地环境与云环境中的区别：
 
@@ -90,15 +85,15 @@ uname -a
 
 - 本地环境实验截图：
 
-<img src="/local_cat_version.png" alt="local_cat_version" style="zoom:80%;" />
+<img src="./image/local_cat_version.png" alt="local_cat_version" style="zoom:80%;" />
 
-<img src="/local_uname.png" alt="local_uname" style="zoom:80%;" />
+<img src="./image/local_uname.png" alt="local_uname" style="zoom:80%;" />
 
 - 云环境实验截图：
 
-<img src="/cloud_cat_version.png" alt="cloud_cat_version" style="zoom:80%;" />
+<img src="./image/cloud_cat_version.png" alt="cloud_cat_version" style="zoom:80%;" />
 
-<img src="/cloud_uname.png" alt="cloud_uname" style="zoom:80%;" />
+<img src="./image/cloud_uname.png" alt="cloud_uname" style="zoom:80%;" />
 
 - 本地环境与云环境中的区别：
 
@@ -116,7 +111,7 @@ uname -a
 ip a
 ```
 
-<img src="/local_ip.png" alt="local_ip" style="zoom:80%;" />
+<img src="./image/local_ip.png" alt="local_ip" style="zoom:80%;" />
 
 - 第二步，修改配置文件并应用
 
@@ -127,17 +122,17 @@ vim /etc/netplan/01-netcfg.yaml # 通过vim编辑器对文件进行修改
 netplan apply # 应用文件
 ```
 
-<img src="/local_netplan.png" alt="local_netplan" style="zoom:80%;" />
+<img src="./image/local_netplan.png" alt="local_netplan" style="zoom:80%;" />
 
-<img src="/local_netplan2.png" alt="local_netplan2" style="zoom:80%;" />
+<img src="./image/local_netplan2.png" alt="local_netplan2" style="zoom:80%;" />
 
 - 第三步，再次查询网卡状态，并获取ip
 
-<img src="/local_ip2.png" alt="local_ip2" style="zoom:80%;" />
+<img src="./image/local_ip2.png" alt="local_ip2" style="zoom:80%;" />
 
 **注：**由于版本的不同，在云环境中没有目录netplan，故不在云环境中做该实验。
 
-<img src="/cloud_netplan.png" alt="cloud_netplan" style="zoom:80%;" />
+<img src="./image/cloud_netplan.png" alt="cloud_netplan" style="zoom:80%;" />
 
 
 
@@ -181,7 +176,7 @@ which scp
 
 - 创建test文件
 
-<img src="/local_test.png" alt="local_test" style="zoom:80%;" />
+<img src="./image/local_test.png" alt="local_test" style="zoom:80%;" />
 
 - 使用scp将虚拟环境中的test文件传输到本地
 
@@ -189,13 +184,13 @@ which scp
  scp cuc@192.168.56.101:/home/cuc/test ./
 ```
 
-<img src="/local_scp.png" alt="local_scp" style="zoom:80%;" />
+<img src="./image/local_scp.png" alt="local_scp" style="zoom:80%;" />
 
 #### 3.2 使用scp在本机和远程Linux系统之间传输文件
 
 - 创建test文件
 
-<img src="/cloud_test.png" alt="cloud_test" style="zoom:80%;" />
+<img src="./image/cloud_test.png" alt="cloud_test" style="zoom:80%;" />
 
 - 使用scp将云环境中的test文件传输到本地
 
@@ -203,7 +198,7 @@ which scp
 scp root@47.116.65.160:/root/test ./
 ```
 
-<img src="/cloud_scp.png" alt="cloud_scp" style="zoom:80%;" />
+<img src="./image/cloud_scp.png" alt="cloud_scp" style="zoom:80%;" />
 
 ### 4. 如何配置 SSH 免密登录？
 
@@ -225,13 +220,13 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub 用户名@ip地址
 
 - 本地环境实验截图
 
-<img src="/local_Password_free_login.png" alt="local_Password_free_login" style="zoom:80%;" />
+<img src="./image/local_Password_free_login.png" alt="local_Password_free_login" style="zoom:80%;" />
 
 - 云环境实验截图
 
-<img src="/key.png" alt="key" style="zoom:80%;" />
+<img src="./image/key.png" alt="key" style="zoom:80%;" />
 
-<img src="/cloud_Password_free_login.png" alt="cloud_Password_free_login" style="zoom:80%;" />
+<img src="./image/cloud_Password_free_login.png" alt="cloud_Password_free_login" style="zoom:80%;" />
 
 
 
@@ -239,7 +234,7 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub 用户名@ip地址
 
 - 在使用scp从虚拟机向宿主机之间传输文件时，直接在远程连接的虚拟机上使用scp命令，显示成功但找不到文件
 
-  - <img src="/problem.png" alt="problem" style="zoom:80%;" />
+  - <img src="./image/problem.png" alt="problem" style="zoom:80%;" />
 
   - 解决方案：从虚拟机向宿主机之间传输文件应该在本机上使用scp命令，并且要注意scp两个参数的位置与间隔
 
@@ -251,5 +246,5 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub 用户名@ip地址
 
 - [查看Linux系统版本-ywl925-博客园](https://www.cnblogs.com/ywl925/p/11083351.html)
 - [ubuntu 20.04 通过netplan配置网络](https://www.linux.com/topic/distributions/how-use-netplan-network-configuration-tool-linux/)
-- [How to Use the ssh-copy-id Command]([How to Use the ssh-copy-id Command (linuxhint.com)](https://linuxhint.com/use-ssh-copy-id-command/#:~:text=SSH-copy-id Command Options 1 -i argument%3A This argument,to the remote host. ... More items... ))
+- [How to Use the ssh-copy-id Command (linuxhint.com)](https://linuxhint.com/use-ssh-copy-id-command/#:~:text=SSH-copy-id Command Options 1 -i argument%3A This argument,to the remote host. ... More items... ])
 
