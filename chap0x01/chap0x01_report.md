@@ -246,5 +246,5 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub 用户名@ip地址
 
 - [查看Linux系统版本-ywl925-博客园](https://www.cnblogs.com/ywl925/p/11083351.html)
 - [ubuntu 20.04 通过netplan配置网络](https://www.linux.com/topic/distributions/how-use-netplan-network-configuration-tool-linux/)
-- [How to Use the ssh-copy-id Command (linuxhint.com)](https://linuxhint.com/use-ssh-copy-id-command/#:~:text=SSH-copy-id Command Options 1 -i argument%3A This argument,to the remote host. ... More items... ])
+- [How to Use the ssh-copy-id Command (linuxhint.com)](https://linuxhint.com/use-ssh-copy-id-command/#:~:text=SSH-copy-id Command Options 1 -i argument%3A This argument,to the remote host. ... More items... )
 
