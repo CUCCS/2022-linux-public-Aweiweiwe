@@ -457,6 +457,10 @@ done
 
 <img src="./images/check_task3.png" style="zoom:80%;" />
 
+### [我的Travis](“https://app.travis-ci.com/github/CUCCS/2022-linux-public-Aweiweiwe”)：
+
+<img src="./images/my_travis.png" style="zoom:80%;" />
+
 ## 实验中遇到的问题及解决方法
 
 - `Travis CI`系统在执行`.travis.yml`文件时出现`No such file or directory`的报错
