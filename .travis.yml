@@ -1,0 +1,48 @@
+language: bash
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y shellcheck
+  - sudo apt-get install imagemagick
+  - sudo apt-get install p7zip-full
+  - sudo apt-get install ghostscript
+  - ls -l
+
+script:
+  - cd chap0x04/ 
+  - cd codefile/ 
+  - wget "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/worldcupplayerinfo.tsv"
+  - wget "https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z"
+  - 7z x web_log.tsv.7z
+  - ls -l 
+  - echo "=============================="
+  - echo Task1
+  - bash task-1.sh -h
+  - bash task-1.sh -q 60
+  - bash task-1.sh -r 90%
+  - bash task-1.sh -w 10 Aweiwei
+  - bash task-1.sh -p P
+  - bash task-1.sh -s S
+  - bash task-1.sh -t
+  - echo "=============================="
+  - echo Task2
+  - bash task-2.sh -h
+  - bash task-2.sh -s 
+  - bash task-2.sh -p 
+  - bash task-2.sh -n 
+  - bash task-2.sh -a 
+  - echo "=============================="
+  - echo Task3
+  - bash task-3.sh -h
+  - bash task-3.sh -o 
+  - bash task-3.sh -i 
+  - bash task-3.sh -u 
+  - bash task-3.sh -c 
+  - bash task-3.sh -f 
+  - bash task-3.sh -s /history/skylab/skylab.html
+  - shellcheck task-1.sh
+  - shellcheck task-2.sh
+  - shellcheck task-3.sh
+notifications:
+  email:
+    on_success: never
