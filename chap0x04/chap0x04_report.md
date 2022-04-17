@@ -4,7 +4,9 @@
 
 ## 实验目的
 
-- 
+- 熟悉`shell脚本`的编写，学会使用`shell脚本编程`的基本语法
+- 熟悉`imagemagick`工具中`convert`命令的使用
+- 学会构造`.travis.yml`配置文件，了解`Travis CI`系统
 
 ## 实验环境
 
@@ -52,7 +54,27 @@
 
 ### 任务一：用bash编写一个图片批处理脚本，实现批量处理图像
 
-**实验前准备：**安装`imagemagick`
+**实验前准备：**
+
+- 安装`imagemagick`
+- 学习使用`convert`命令：
+
+```bash
+#质量压缩
+ convert -quality {width}x{height} {图片路径} {缩放后的图片路径}
+
+#缩放图片大小：
+convert -resize {width}x{height} {图片路径} {缩放后的图片路径}
+
+#添加水印
+#把名为logo.gif的水印图标添加在原始图片（src.jpg）右下角，且水印的下边缘距原始图片10像素、右边缘距原始图片5像素
+convert src.jpg logo.gif -gravity southeast -geometry +5+10 -composite dest.jpg
+
+#图片格式转换：
+convert  xxx.jpg  xxx.png      #将jpeg转成png文件 
+convert  xxx.gif   xxx.bmp     #将gif转换成bmp图像 
+convert  xxx.tiff  xxx.pcx   #将tiff转换成pcx图像 
+```
 
 **编写脚本：**
 
@@ -171,7 +193,25 @@ esac
 done
 ```
 
+**脚本测试：**
+
+<img src="./images/check_task1_1.png" style="zoom:80%;" />
+
+<img src="./images/check_task1_2.png" style="zoom:80%;" />
+
+- 检查图像名前缀与后缀：
+
+<img src="./images/check_task1_3.png" style="zoom:80%;" />
+
 ### 任务二：用bash编写一个文本批处理脚本，完成`worldcupplayerinfo.tsv`中数据统计任务
+
+**实验准备：**
+
+- 下载所需文件：
+
+```bash
+wget "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/worldcupplayerinfo.tsv"
+```
 
 **脚本编写：**
 
@@ -188,6 +228,7 @@ function help {
 
 # 统计不同年龄区间范围（20岁以下、[20-30]、30岁以上）的球员数量、百分比
 function countAge {
+	#指定输入文件折分隔符 \t
     awk -F "\t" '
         BEGIN {a=0; b=0; c=0;}
         $6!="Age" {
@@ -292,7 +333,21 @@ while [ "$1" != "" ];do
 done
 ```
 
+**脚本测试：**
+
+<img src="./images/check_task2.png" style="zoom:80%;" />
+
 ### 任务三：用bash编写一个文本批处理脚本，完成`web_log.tsv`中数据统计任务
+
+**实验准备：**
+
+- 安装`p7zip-full`
+- 将所需文件下载到本地并解压
+
+```bash
+wget "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/worldcupplayerinfo.tsv"
+7z x web_log.tsv.7z
+```
 
 **脚本编写：**
 
@@ -398,16 +453,38 @@ while [ "$1" != "" ];do
 done
 ```
 
+**脚本测试：**
 
+<img src="./images/check_task3.png" style="zoom:80%;" />
 
 ## 实验中遇到的问题及解决方法
 
-覆盖问题
+- `Travis CI`系统在执行`.travis.yml`文件时出现`No such file or directory`的报错
+
+  **解决方法：**`travis` 的测试执行环境中脚本执行的 `工作目录` 与`.travis.yml`所在的目录不符，在`.travis.yml`文件中`cd`到`shell脚本`所在的目录即可
+
+- 对`.travis.yml`配置文件的用法与作用不了解，导致无法下手做实验
+  
+  **解决方法：**再次仔细看黄玮老师的视频、查看同学们在畅课讨论区的提问与经验帖分享、询问同学、参考官方文档、参考师哥师姐的公开仓库，终于大致把它弄懂了
+  
+- 一开始直接下载了任务二、三的`.tsv`数据文件，在`.travis.yml`文件中没有写上自动下载数据文件的代码，导致出现错误
+  
+  **解决方法：**在文件中添加`wget "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/worldcupplayerinfo.tsv"`和`wget "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/worldcupplayerinfo.tsv"`两段代码
+  
+- 思考如何将虚拟机里的文件上传到github上
+
+  **两种解决方法：**
+
+  - 使用`scp`命令将文件从虚拟机传送到宿主机中再上传
+  - 直接在虚拟机中配置`git`
 
 ## 参考资料
 
-- 
-- 参考了以下师哥or师姐的公开仓库进行脚本与`travis.yml`配置文件的修改
+- [Linux第四章课件](https://c4pr1c3.github.io/LinuxSysAdmin/chap0x04.md.html)
+- [持续集成服务Travis CI 教程 - 阮一峰](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)
+- [Travis CI User Documentation](https://docs.travis-ci.com/)
+- [shell脚本编程基础| 烏巢](https://hejueyun.github.io/posts/48ec4ca9/)
+- 参考了以下师哥or师姐的公开仓库进行`shell脚本`与`travis.yml`配置文件的完善
   - https://github.com/CUCCS/2021-linux-public-Stephaniesuu/pull/4/
   - https://github.com/CUCCS/linux-2020-zhsss/pull/5
 
